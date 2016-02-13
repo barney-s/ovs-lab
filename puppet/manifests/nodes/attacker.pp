@@ -1,0 +1,1 @@
+node attacker inherits basenode {}

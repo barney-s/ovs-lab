@@ -1,0 +1,1 @@
+node shadow inherits basenode {}
