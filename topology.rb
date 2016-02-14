@@ -7,10 +7,10 @@
 
 VMInstances = [
  { :vmname => :attacker, :provisioning => [{:puppet => 'site.pp'}]}, 
- { :vmname => :sensor,   :provisioning => [{:puppet => 'site.pp'}]},
- { :vmname => :gw,       :provisioning => [{:puppet => 'site.pp'}]},
- { :vmname => :shvtep,   :provisioning => [{:puppet => 'site.pp'}]},
- { :vmname => :shadow,   :provisioning => [{:puppet => 'site.pp'}]}
+ { :vmname => :sensor,   :provisioning => [{:puppet => 'site.pp'}, {:shell => "/vagrant/shared/demo02/sensor.sh"}]},
+ { :vmname => :gw,       :provisioning => [{:puppet => 'site.pp'}, {:shell => "/vagrant/shared/demo02/gw.sh"}]},
+ { :vmname => :shvtep,   :provisioning => [{:puppet => 'site.pp'}, {:shell => "/vagrant/shared/demo02/shvtep.sh"}]},
+ { :vmname => :shadow,   :provisioning => [{:puppet => 'site.pp'}, {:shell => "/vagrant/shared/demo02/shadow.sh"}]}
 ]
 
 

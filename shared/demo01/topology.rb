@@ -7,10 +7,10 @@
 
 VMInstances = [
  { :vmname => :attacker, :ip => '192.168.101.10', :provisioning => [{:puppet => 'site.pp'}]}, 
- { :vmname => :sensor, :ip => '192.168.101.20', :provisioning => [{:puppet => 'site.pp'}]},
- { :vmname => :shvtep, :ip => '192.168.101.30', :provisioning => [{:puppet => 'site.pp'}]},
- { :vmname => :shadow, :ip => '192.168.101.40', :provisioning => [{:puppet => 'site.pp'}]}
-# { :vmname => :cn1,    :box => 'precise64',   :ip => '12.168.192.20', :cpus =>1, :mem => 4096, :provisioning => [ {:role => 'oscnk64'} ] }
+ { :vmname => :sensor, :ip => '192.168.101.20', :provisioning => [{:puppet => 'site.pp'}, {:shell => "/vagrant/shared/demo02/sensor.sh"}]},
+ { :vmname => :shvtep, :ip => '192.168.101.30', :provisioning => [{:puppet => 'site.pp'}, {:shell => "/vagrant/shared/demo02/shvtep.sh"}]},
+ { :vmname => :shadow, :ip => '192.168.101.40', :provisioning => [{:puppet => 'site.pp'}, {:shell => "/vagrant/shared/demo02/shadow.sh"}]}
+# { :vmname => :hname,    :box => 'precise64',   :ip => '192.168.101.20', :cpus =>1, :mem => 2048, :provisioning => [ {:role => 'sample'} ] }
 ]
 
 
