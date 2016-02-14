@@ -1,0 +1,1 @@
+node gw inherits basenode {}

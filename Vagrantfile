@@ -51,10 +51,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       #server.vm.boot_mode = :headless
       #server.vm.network :forwarded_port, guest: 22,   host: opts[:ssh_port], auto_correct: true
       ## vagrant-kvm provider needs explicit setting of VM Base MAC to avoid MAC collisions
-      server.vm.base_mac  = NetworkUtil::append_mac_ipaddr("A6:12", opts[:ip])
-      server.vm.network :private_network, adapter: 2, ip: opts[:ip]
-
-      adapter = 3
+      adapter = 2
+      if opts.has_key?(:ip)
+        server.vm.base_mac  = NetworkUtil::append_mac_ipaddr("A6:12", opts[:ip])
+        server.vm.network :private_network, adapter: 2, ip: opts[:ip]
+        adapter = 3
+      end
       Bridges.each do |bropts|
           #puts "scanning host #{opts[:vmname]} #{bropts}"
           setad = false

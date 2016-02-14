@@ -2,8 +2,12 @@
 #author: Bharanidharan Seetharaman
 #
 
+vteppeer="192.30.30.3"
 sudo ovs-vsctl add-br br0
-sudo ovs-vsctl add-port br0 eth2
-sudo ifconfig eth2 0
-sudo ovs-vsctl add-port br0 vxlan0 -- set Interface vxlan0 type=vxlan options:remote_ip=192.168.101.30
+sudo ovs-vsctl add-port br0 eth1
+ifconfig br0 up
+ifconfig br0 192.10.10.4
+ifconfig eth1 0
+sudo route add $vteppeer/32 gw 192.10.10.2 dev br0
+sudo ovs-vsctl add-port br0 vxlan0 -- set Interface vxlan0 type=vxlan options:remote_ip=$vteppeer
 sudo ovs-vsctl show 
