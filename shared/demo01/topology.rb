@@ -1,5 +1,24 @@
 # author: bharanidharan seetharaman
 #
+# Topology
+# -------------
+#
+# vxlan via separate interface
+#
+#                 +-------------------+
+#                 |                   |
+#    attacker   sensor                |
+#       |         |                   |
+#    ---+---------+-----sens0         |
+#                                     |
+#                                     |  
+#    ---+---------+-----shdw0         |
+#       |         |                   |
+#     shadow     shvtep               |
+#                 |                   |
+#                 +-------------------+
+
+
 
 
 #VM Instance definitions:

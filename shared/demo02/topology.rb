@@ -1,9 +1,24 @@
 # author: bharanidharan seetharaman
 #
+# Topology
+# -------------
+#
+# vxlan via same interface
+#
+#    attacker   sensor    
+#       |         |       
+#    ---+---------+----+-----sens0
+#                      |
+#                      gw
+#                      |
+#    ---+---------+----+-----shdw0
+#       |         |
+#     shadow     shvtep
+#
+#
 
-
-#VM Instance definitions:
-#========================
+# VM Instance definitions:
+# ========================
 
 VMInstances = [
  { :vmname => :attacker, :provisioning => [{:puppet => 'site.pp'}]}, 
@@ -15,10 +30,12 @@ VMInstances = [
 
 
 
-#openvswitch bridge config:
-#==========================
+# openvswitch bridge config:
+# ==========================
 
 Bridges = [ 
   { :name => :sens0, :ip_prefix => '192.10.10.0', :ip_last => 2, :mac_prefix => '02:AB', :hosts => [ "gw", "attacker", "sensor" ] , :promiscous => ["sensor"]},
   { :name => :shdw0, :ip_prefix => '192.30.30.0', :ip_last => 2, :mac_prefix => '02:AB', :hosts => [ "gw", "shvtep", "shadow" ], :promiscous => ["shvtep"]} 
 ]
+
+
